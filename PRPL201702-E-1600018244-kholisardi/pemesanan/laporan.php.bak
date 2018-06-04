@@ -1,0 +1,71 @@
+<?php
+
+	include "koneksi.php";
+
+	$query		= mysql_query("SELECT * from tabel_pesan order by kodepesan asc");
+?>
+
+<form action="" method="POST">
+	
+	<table border="1" style="text-align: center;">
+	
+	<tr>
+		<th>No</th>
+		<th>Tanggal</th>
+		<th>Kode Pesan</th>
+		<th>Nama Pemesan</th>
+		<th>Nama Makanan</th>
+		<th>jumlah Makanan</th>
+		<th>Nama Minuman</th>
+		<th>Jumlah Minuman</th>
+		<th>Total Bayar</th>
+		<th>Bayar</th>
+		<th>Kembali</th>
+	</tr>
+	<?php if(mysql_num_rows($query)>0){ ?>
+    <?php
+        $no = 1;
+        while($data = mysql_fetch_array($query)){
+    ?>
+
+    <tr>
+    	<td><?php echo $no ?></td>
+    	<td><?php echo $data["tanggal"]; ?></td>
+    	<td><?php echo $data["kodepesan"]; ?></td>
+    	<td><?php echo $data["nama_pemesan"]; ?></td>
+    	<td><?php echo $data["makanan"]; ?></td>
+    	<td><?php echo $data["jumlahmakanan"]; ?></td>
+    	<td><?php echo $data["minuman"]; ?></td>
+    	<td><?php echo $data["jumlahminuman"]; ?></td>
+    	<td><?php echo $data["totalbayar"]; ?></td>
+    	<td><?php echo $data["bayar"]; ?></td>
+    	<td><?php echo $data["kembali"]; ?></td>
+
+    </tr>
+
+	<?php $no++; } ?>
+    <?php } ?>
+
+	</table>
+
+
+</form>
+
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+</style>

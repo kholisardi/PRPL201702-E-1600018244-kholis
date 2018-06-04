@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form pemesanan</title>
+	<script src="java.js"></script>
+	<link href="css.css" rel="stylesheet">
+	<link href="../css/style.css" rel="stylesheet">
+	
+</head>
+
+<body>
+	
+    <!-- Navigasi -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Restaurant</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu Navigasi bar -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+         <ul class="navbar-nav ml-auto">
+             <li class="nav-item active">
+              <a class="nav-link" href="#">Menu 
+                <span class="sr-only">(current)</span>
+              </a> 
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pemesanan/index.php">Pesan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.php">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+
+            <!-- Search -->
+            <li class="nav-item">
+               <form class="form-inline">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </li>
+            <!-- search -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+<!-- End navigasi bar -->	
+	
+
+
+
+<form method="POST" action="input.php" onsubmit="return validasi()" name="myForm">
+	<table  border= "0" align="center">
+		<tr>
+			<td colspan="3" align="center"><h2>Form Pemesanan</h2></td>
+		</tr>
+		
+		<tr>
+			<td>Kode Pesan</td>
+			<td>:</td>
+			<td><input type="text" name="kodepesan" value="<?php 
+					include "kodepesan.php";
+
+				?>" 
+
+			readonly="readonly"/></td>
+		</tr>
+
+		<tr>
+			<td>Tanggal</td>
+			<td>:</td>
+			<td><input type="text" name="tanggal" value="<?php 
+				$today = date("d F Y");
+				echo $today;
+			?>" readonly="readonly"/></td>
+		</tr>
+
+<!-- Nama pemesan -->
+		<tr>
+			<td>Nama Pemesan</td>
+			<td>:</td>
+			<td><input type="text" name="namapemesan" id="namapemesan" placeholder="Nama Anda"/>
+			</td>
+		</tr>
+
+<!-- MAKANAN -->
+		<tr>
+			<td>Makanan</td>
+			<td>:</td>
+			<td>
+				<input type="checkbox" value="Nasi goreng" name="makanan[]" id="nasgor" >Nasi Goreng <td>Rp. 15.000,-</td>
+				<td>
+					<input type="text" name="jumlahnasgor" id="jumlahnasgor" size="1" onfocus="mulaiHitung()" onblur="berhentiHitung()"/>
+				</td>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>:</td>
+			<td>
+				<input type="checkbox" value="Nasi Ayam" name="makanan[]" id="nasiayam">Nasi Ayam <td>Rp. 13.000,-</td>
+				<td>
+					<input type="text" name="jumlahnasiayam" id="jumlahnasiayam" size="1" onfocus="mulaiHitung()" onblur="berhentiHitung()"/>
+				</td>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>:</td>
+			<td>
+				<input type="checkbox" value="Ikan Gurame" name="makanan[]" id="gurame">Ikan Gurame <td>Rp. 42.000,-</td>
+				<td>
+					<input type="text" name="jumlahgurame" id="jumlahgurame" size="1" onfocus="mulaiHitung()" onblur="berhentiHitung()">
+				</td>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>:</td>
+			<td>
+				<input type="checkbox" value="Bakso Spesial" name="makanan[]" id="baksospesial">Bakso Spesial <td>Rp. 20.000,-</td>
+				<td>
+					<input type="text" name="jumlahbakso" id="jumlahbakso" size="1" onfocus="mulaiHitung()" onblur="berhentiHitung()" >
+				</td>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>:</td>
+			<td>
+				<input type="checkbox" value="Ayam Geprek" name="makanan[]" id="geprek">Ayam Geprek <td>Rp. 15.000,-</td>
+				<td>
+					<input type="text" name="jumlahgeprek" id="jumlahgeprek" size="1" onfocus="mulaiHitung()" onblur="berhentiHitung()">
+				</td>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>:</td>
+			<td>
+				<input type="checkbox" value="Mie Ayam Spesial" name="makanan[]" id="mieayam">Mie Ayam Spesial <td>Rp. 18.000,-</td>
+				<td>
+					<input type="text" name="jumlahmieayam" id="jumlahmieayam" size="1" onfocus="mulaiHitung()" onblur="berhentiHitung()">
+				</td>
+			</td>
+		</tr>
+
+<!-- Minuman -->
+		<tr>
+			<td>Minuman</td>
+			<td>:</td>
+			<td>
+				<input type="checkbox" value="Es Teh" name="minuman[]" id="esteh">Ice tea <td>Rp. 8.000,-</td>
+				<td>
+					<input type="text" name="jumlahesteh" id="jumlahesteh" size="1" onfocus="mulaiHitung()" onblur="berhentiHitung()" />
+				</td>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>:</td>
+			<td>
+				<input type="checkbox" value="Es jeruk" name="minuman[]" id="esjeruk">Es jeruk <td>Rp. 7.000,-</td>
+				<td>
+					<input type="text" name="jumlahesjeruk" id="jumlahesjeruk" size="1" onfocus="mulaiHitung()" onblur="berhentiHitung()">
+				</td>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>:</td>
+			<td>
+				<input type="checkbox" value="Jus Alpukat"  name="minuman[]" id="jusalpukat">Juice Avocado <td>Rp. 15.000,-</td>
+				<td>
+					<input type="text" name="jumlahjusalpukat" id="jumlahjusalpukat" size="1" onfocus="mulaiHitung()" onblur="berhentiHitung()">
+				</td>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>:</td>
+			<td>
+				<input type="checkbox" value="Es susu" name="minuman[]" id="susu">Es susu putih <td>Rp. 10.000,-</td>
+				<td>
+					<input type="text" name="jumlahsusu" id="jumlahsusu" size="1" onfocus="mulaiHitung()" onblur="berhentiHitung()">
+				</td>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>:</td>
+			<td>
+				<input type="checkbox" value="Es Buah" name="minuman[]" id="esbuah">Es buah <td>Rp. 15.000,-</td>
+				<td>
+					<input type="text" name="jumlahesbuah" id="jumlahesbuah" size="1" onfocus="mulaiHitung()" onblur="berhentiHitung()">
+				</td>
+			</td>
+		</tr>
+
+<!--  
+		<tr>
+			<td>Harga satuan</td>
+			<td>:</td>
+			<td><input type="text" name="hargasatuan" id="hargasatuan" onfocus="mulaiHitung()" onblur="berhentiHitung()" /></td>
+		</tr> -->
+<!--		<tr>
+			<td>Jumlah beli</td>
+			<td>:</td>
+			<td><input type="text" name="jumlahbeli" id="jumlahbeli" onfocus="mulaiHitung()" onblur="berhentiHitung()"/></td>
+		</tr>-->
+		<tr>
+			<td>Total bayar</td>
+			<td>:</td>
+			<td><input type="text" name="totalbayar" id="totalbayar" /></td>
+		</tr>
+		<tr>
+			<td>Bayar</td>
+			<td>:</td>
+			<td><input type="text" name="bayar" id="bayar" onfocus="mulaiHitung()" onblur="berhentiHitung()"/></td>
+		</tr>
+		<tr>
+			<td>Kembalian</td>
+			<td>:</td>
+			<td><input type="text" name="kembalian" id="kembalian" onfocus="mulaiHitung()" onblur="berhentiHitung()"/></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td><input type="submit" value="submit" name="submit"> <input type="reset" value="reset"></td>
+		</tr>
+
+	</table>
+</form>
+</body>
+</html>
